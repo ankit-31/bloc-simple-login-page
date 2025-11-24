@@ -7,6 +7,8 @@ import 'package:multiplestate/bloc/post/post_bloc.dart';
 import 'package:multiplestate/bloc/repository/login/login_repository.dart';
 import 'package:multiplestate/bloc/repository/post/post_repository.dart';
 import 'package:multiplestate/bloc/switch/switch_bloc.dart';
+import 'package:multiplestate/cubit/increment_cubit.dart';
+import 'package:multiplestate/ui/cubit/cubitpage.dart';
 import 'package:multiplestate/ui/imagepicker/imagepickerscreen.dart';
 import 'package:multiplestate/ui/login/login_screen.dart';
 import 'package:multiplestate/ui/postapi/apihomepage.dart';
@@ -30,7 +32,9 @@ class MyApp extends StatelessWidget {
       BlocProvider(create: (_)=>CounterBloc()),
       BlocProvider(create: (_)=>SwitchBloc()),
       BlocProvider(create: (_)=>ImagePickerBloc(ImagePickerUtils())),
-      BlocProvider(create: (_)=>PostBloc(PostRepository()),)
+      BlocProvider(create: (_)=>PostBloc(PostRepository()),),
+      //cubit demo
+      BlocProvider(create: (_)=>IncrementCubit()),
     ],
     child:  MaterialApp(
       title: 'Flutter Demo',
@@ -38,7 +42,7 @@ class MyApp extends StatelessWidget {
 
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: LoginScreen(),
+      home: Cubitpage(),
     ));
   }
 }
